@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登陆</title>
+    <base href="/">
+    <link href="{% static 'css/pattern.css' %}" rel="stylesheet" type="text/css"/>
+</head>
+<body background="{% static '/img/login.png' %}" style="background-size:cover ">
+<div class="login_win">
+    <form action="/user/login/" method="post">
+        {% csrf_token %}
+        <p class="login">登录系统</p>
+        <p>
+            <input id="username" name="username" class="input_box" type="text" placeholder="请输入用户名">
+        </p>
+
+        <p>
+            <input id="password" name="password" class="input_box" type="password" placeholder="请输入密码">
+        </p>
+        <p>
+            <button type="submit" class="button_login"> 登录</button>
+        </p>
+    </form>
+    <p>
+    <form action="/user/register/" method="get">
+        <button type="submit" class="button_register"> 注册</button>
+    </form>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    window.onload = myfun({{ date }});// 不要括号
+
+    function myfun(date) 　　{ 　　
+
+           alert( date);
+    }
+</script>
+
+</body>
+</html>

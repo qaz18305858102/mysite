@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function input_username(userlist) {
+        var username = "roootrr232";
+        /*
+        * 6到16位（字母，数字，下划线，减号）
+        **/
+        var patt = /^[a-zA-Z0-9_-]{6,16}$/;
+
+        if (patt.test(username)) {
+            for (i in userlist) {
+                if (userlist[i] == username) {
+                    console.log("用户名已存在")
+                    return "用户名已存在"
+                }
+            }
+            console.log("用户名合法")
+            return 1
+        } else {
+            console.log("请输入正确的用户名")
+            return "请输入正确的用户名"
+        }
+    }
+
+    userlist = ['qaz23423', 'qaz123456', 'roootrr23', 'roootrr232', 'username', 'username', 'username', 'username', 'username', 'username', 'username', 'username', 'username', 'username', 'username', 'username']
+    input_username(userlist)
+</script>
+{{ userlist }}
+</body>
+</html>

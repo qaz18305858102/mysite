@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{% static 'js/register.js' %}"></script>
+
+</head>
+<body>
+<div class="register_win">
+    <form action="/user/register/" method="post" onsubmit="return check_sub({{ user_list }})">
+        {% csrf_token %}
+        <p style="font-size: 35px;margin-left: 60px">创建你的账号</p>
+        <div class="input_div">
+            <input id="Firstname" name="firstname" class="input_box" type="text" placeholder="姓氏">
+            &nbsp;&nbsp;
+            <input id="Lastname" name="lastname" class="input_box" type="text" placeholder="名字"><br>
+            <p></p>
+            <input id="Username" name="username" class="input_box_01" type="text" placeholder="用户名"
+                   oninput="input_username({{ user_list }})">
+            <p style="color: #A9A9A9;font-size: 8px;height: 8px"><span id="username_hint">6到12位（字母，数字组合）</span></p>
+            <p></p>
+            <input id="UserEmail" name="Email" class="input_box_01" type="text" placeholder="电子邮箱"
+                   oninput="input_Email( )">
+            <p style="color: #A9A9A9;font-size: 8px;height: 8px"><span id="Email_hint">您可以使用字母和数字</span></p>
+            <p></p>
+            <select id="sid" class="input_box_01" name="question">
+                <option value="">---请选择---</option>
+                {% for item in question %}
+                    <option value="{{ item }}">{{ item }}</option>
+                {% endfor %}
+            </select>
+            <p></p>
+            <input id="Answer" name="answer" class="input_box_01" type="text" placeholder="请输入答案">
+            <p></p>
+            <input id="Password" name="password" class="input_box" type="password" placeholder="密码"
+                   oninput="input_password( )">
+            &nbsp;&nbsp;
+            <input id="Repeatpassword" name="repeatpassword" class="input_box" type="password" placeholder="再次输入">
+            <p style="color: #A9A9A9;font-size: 8px;height: 8px"><span
+                    id="password_hint">6到12位（字母，数字组合）</span></p>
+            <!--<p style="height: 5px"></p>-->
+            <p style="font-size: 20px;">
+                <a href="{% url 'login' %}" style="text-decoration: none;">已有账号登陆</a>
+            </p>
+        </div>
+        <div align="center">
+            <button type="submit" class="button_register" id="register_button">注册</button>
+        </div>
+        <p style="height: 5px"></p>
+        <div align="center">
+            <!--<p style="font-size: 20px;color: red">{{ date }}</p>-->
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
