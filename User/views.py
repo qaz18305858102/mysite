@@ -75,5 +75,6 @@ def info(request):
     USER_MMID = request.COOKIES.get('USER_MMID', '')
     print(USER_MMID)
     if not USER_MMID:
-        return HttpResponseRedirect('/user/login/')
-    return render(request, 'info.html')
+        return render(request, 'info.html',{'data':'登陆'})
+    date = UserBase.objects.get(username="hehaodong123")
+    return render(request, 'info.html',{'data':date})
