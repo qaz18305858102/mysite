@@ -26,7 +26,7 @@ def login(request):
         USER_MMID = Encryption.des_encrypt(user_MMID)
         # 往库中插入cookie
         UserBase.objects.filter(username=username).update(USER_MMID=USER_MMID)
-        response.set_cookie('USER_MMID', USER_MMID, 360)
+        response.set_cookie('USER_MMID', USER_MMID, 1800)
         return response
     return HttpResponseRedirect(reverse("login"), {"date": '帐号密码错误'})
 
@@ -75,6 +75,8 @@ def info(request):
     USER_MMID = request.COOKIES.get('USER_MMID', '')
     print(USER_MMID)
     if not USER_MMID:
-        return render(request, 'info.html',{'data':'登陆'})
-    date = UserBase.objects.get(username="hehaodong123")
-    return render(request, 'info.html',{'data':date})
+        return render(request, 'info.html', {'data': '登陆'})
+    data_username = UserBase.objects.filter(USER_MMID=USER_MMID).first()
+    data = UserInfo.objects.filter(username=data_username.username).first()
+    data_name = data.firstname + data.lastname
+    return render(request, 'info.html', {'data': data_name })
