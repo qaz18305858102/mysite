@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,10 @@
     <title>Title</title>
 </head>
 <body>
-<div>{{ data }}</div>
+<div class="User_Info">
+    <a class="user_avatar" href="{% url 'login' %}">
+        <img src="https://profile.csdnimg.cn/1/6/C/0_weixin_58832705">{{ data }}</a>
+</div>
 
 </body>
 </html>

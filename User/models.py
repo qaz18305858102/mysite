@@ -1,6 +1,4 @@
 from django.db import models
-
-
 # Create your models here.
 
 
@@ -31,3 +29,10 @@ class UserInfo(models.Model):
 
 class Question(models.Model):
     question = models.CharField(max_length=30)
+
+
+class UserAvatar(models.Model):
+    username =  models.CharField(max_length=30)
+    avatar_url = models.ImageField(upload_to='product_pic',verbose_name=u'图片地址',default='')
+    creat_time = models.DateTimeField(auto_now_add=True)
+    updtae_time = models.DateTimeField(auto_now=True)
